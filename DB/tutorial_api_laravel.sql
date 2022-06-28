@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-06-2022 a las 15:36:26
+-- Tiempo de generación: 28-06-2022 a las 15:39:21
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.1
 
@@ -18,30 +18,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `apirestlaravel`
+-- Base de datos: `tutorial_api_laravel`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `articulos`
+-- Estructura de tabla para la tabla `categorias`
 --
 
-CREATE TABLE `articulos` (
+CREATE TABLE `categorias` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `descripcion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `precio` double(8,2) NOT NULL,
-  `stock` int(11) NOT NULL,
+  `cat_nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cat_obs` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `articulos`
+-- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `articulos` (`id`, `descripcion`, `precio`, `stock`, `created_at`, `updated_at`) VALUES
-(2, 'weqwqxxx', 2.00, 3, '2022-05-22 03:25:53', '2022-05-22 03:26:27');
+INSERT INTO `categorias` (`id`, `cat_nom`, `cat_obs`, `created_at`, `updated_at`) VALUES
+(1, 'bebidas', 'en promocion', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -80,7 +79,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2022_05_21_165821_create_articulos_table', 2);
+(5, '2021_09_12_232203_create_categorias_table', 1),
+(6, '2021_09_12_232807_create_productos_table', 1);
 
 -- --------------------------------------------------------
 
@@ -115,6 +115,20 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `prod_nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prod_obs` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
@@ -134,9 +148,9 @@ CREATE TABLE `users` (
 --
 
 --
--- Indices de la tabla `articulos`
+-- Indices de la tabla `categorias`
 --
-ALTER TABLE `articulos`
+ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -167,6 +181,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -178,10 +198,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT de la tabla `articulos`
+-- AUTO_INCREMENT de la tabla `categorias`
 --
-ALTER TABLE `articulos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `categorias`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -193,12 +213,18 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
